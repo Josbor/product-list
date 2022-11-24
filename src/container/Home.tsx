@@ -6,6 +6,8 @@ import { getProductList } from '../data/api'
 import { Product as productModel } from '../models/products.models'
 import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../app/store'
+import AppBarProducts from '../components/appBarProducts'
+import ProductPagination from '../components/Pagination'
 
 const Home = () => {
   const [list, setList] = useState<productModel[]>([])
@@ -27,28 +29,19 @@ const Home = () => {
     setModal(false)
   }
   const styleList = {
+    //gridTemplateColumns: `repeat(${col}, 1fr)`,
     gridTemplateColumns: `repeat(${col}, 1fr)`,
     gap: 15,
     justifyItems: 'center'
   }
   return (
     <div className='main-container'>
+      <AppBarProducts
+        setCol={setCol}
+        col={col}
+      />
       <h1> this is the container of product list</h1>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Cantidad de Columnas</InputLabel>
-        <Select
-          labelId="Selecciona cantidad de columnas"
-          id="select"
-          value={col}
-          label="Age"
-          onChange={e => setCol(Number(e.target.value))}
-        >
-          <MenuItem value={4}>4</MenuItem>
-          <MenuItem value={3}>3</MenuItem>
-          <MenuItem value={2}>2</MenuItem>
-          <MenuItem value={1}>1</MenuItem>
-        </Select >
-      </FormControl>
+      
       <div className="content-container">
 
         <div className='list-container' style={styleList}>
@@ -63,7 +56,10 @@ const Home = () => {
         </div>
       </div>
       {modal && <ProductModal setModal={setModal} />}
+      <ProductPagination/>
     </div>
+
+    
   )
 }
 
