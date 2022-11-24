@@ -17,10 +17,7 @@
   -webkit-text-size-adjust: 100%;
  
 } 
-*{
-  border: none;
-  background-color: none;
-}
+
 .list-container{
   display: grid;
   grid-template-columns:repeat(4, 1fr);

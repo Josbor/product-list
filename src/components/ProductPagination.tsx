@@ -1,5 +1,7 @@
 import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
+import { useSelector } from 'react-redux';
+import { RootState } from '../app/store';
 
 const containerPagination = {
     width: '100%',
@@ -23,13 +25,39 @@ const paginationStyle = {
     height: 50
 }
 
-export default function ProductPagination() {
+
+export default function ProductPagination({pag,setPag}:any) {
+    const{totalPages,totalItems}=pag
+    const [page,setPage]=React.useState(1)
+   const [pageinit,setPageInit]=React.useState(1)
+   const [pageEnd,setPageEnd]=React.useState(10)
+
+    
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        
+            if (value>totalPages ) return
+               
+                setPage(value)
+                const newPag={
+                    pageIni:value==1?1:(value*10)-10,
+                    pageEnd:value==1?10:(value*10),
+                    currentPage:value,
+                    totalPages,
+                    totalItems
+                }
+                setPag(newPag)
+            
+                
+      
+           
+    
+  };
     return (
 
         <div style={containerPagination}>
             <div style={paginationStyle}>
 
-                <Pagination count={3} variant="text" color='primary' style={{ boxShadow: '24px' }} />
+                <Pagination count={pag.totalPages} onChange={handleChange} page={page} variant="text" color='primary' style={{ boxShadow: '24px' }} />
             </div>
 
         </div>

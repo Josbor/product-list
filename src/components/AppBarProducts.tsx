@@ -82,9 +82,10 @@ const AppBarProducts = ({setCol,col}:any) => {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },justifyContent:'flex-end',alignItems:'center' }}>
           
-            
-                    <FormControl style={{color:'white'}}color="primary">
-                          <Select
+                    <p style={{marginRight:15}}>NRO COLUMNAS  </p>
+                    
+                          <Select color="primary"
+                              style={{color:'white'}}
                               labelId="Selecciona cantidad de columnas"
                               id="select"
                               value={col}
@@ -96,7 +97,7 @@ const AppBarProducts = ({setCol,col}:any) => {
                               <MenuItem value={2}>2</MenuItem>
                               <MenuItem value={1}>1</MenuItem>
                           </Select >
-                      </FormControl>
+                    
                               
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' },justifyContent:'flex-end',alignItems:'center'  }}>
