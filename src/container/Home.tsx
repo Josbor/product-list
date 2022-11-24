@@ -4,16 +4,20 @@ import  ProductModal from '../components/Modal'
 import Producto from '../components/Producto'
 import { getProductList } from '../data/api'
 import { Product as productModel} from '../models/products.models'
+import { useSelector, useDispatch } from 'react-redux'
+import type { RootState } from '../app/store'
 
 const Home = () => {
     const [list,setList]=useState<productModel[]>([])
     const [col,setCol]=useState<number>(4)
     const [modal,setModal]=useState(false);
     
+  
     
     useEffect(()=>{
         getProductList().then(e=>{setList(e)})
     },[])
+    
     
    const openModal=()=>{
     setModal(true)

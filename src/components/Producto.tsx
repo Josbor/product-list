@@ -5,6 +5,9 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import type { RootState } from '../app/store'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectProduct } from '../features/selectedProductSlice';
 
 interface props {
   key: number,
@@ -16,9 +19,16 @@ const style={
   color:'#C5C5C5'
 }
 const Producto = ({ producto,openModal}: props) => {
+  const selectedProduct = useSelector((state: RootState) => state.selectedProduct.value)
+ 
+  const dispatch = useDispatch()  
 
+  const handleSelect =()=>{
+    openModal();
+    dispatch(selectProduct(producto))
+  }
   return (
-    <div onClick={openModal}>
+    <div onClick={handleSelect}>
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
           <CardMedia

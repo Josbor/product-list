@@ -6,6 +6,9 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useSelector } from 'react-redux';
+import { RootState } from '../app/store';
+import ImgGallery from './ImgGallery';
 
 
 
@@ -17,11 +20,12 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
+  width: 800,
+  bgcolor: 'none',
+ // border: '2px solid #000',
+  //boxShadow: 24,
   p: 4,
+  height:400
 };
 
 export default function TransitionsModal({setModal}:any) {
@@ -31,6 +35,8 @@ export default function TransitionsModal({setModal}:any) {
     setModal(false)
   };
    
+  const productSelected=useSelector((state:RootState)=>state.selectedProduct.value)
+  const {images,title}:any=productSelected
   
   return (
     <div>
@@ -47,12 +53,11 @@ export default function TransitionsModal({setModal}:any) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography>
-            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
+            <div style={{width:800, height:400}}>
+            <ImgGallery slides={images}/>
+            </div>
+           
+           
           </Box>
         </Fade>
       </Modal>
