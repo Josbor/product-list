@@ -6,8 +6,9 @@ import { getProductList } from '../data/api'
 import { Product as productModel } from '../models/products.models'
 import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../app/store'
-import AppBarProducts from '../components/appBarProducts'
+
 import ProductPagination from '../components/ProductPagination'
+import AppBarProducts from '../components/AppBarProducts'
 
 const Home = () => {
   const [list, setList] = useState<productModel[]>([])

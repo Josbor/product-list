@@ -21,9 +21,9 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 800,
-  bgcolor: 'none',
+ 
  // border: '2px solid #000',
-  //boxShadow: 24,
+  boxShadow: 'inherit',
   p: 4,
   height:400
 };
@@ -53,7 +53,7 @@ export default function TransitionsModal({setModal}:any) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <div style={{width:800, height:400}}>
+            <div style={{width:800, height:400,}}>
             <ImgGallery slides={images}/>
             </div>
            
