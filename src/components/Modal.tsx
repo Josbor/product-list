@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
 import ImgGallery from './ImgGallery';
+import { Dialog, DialogContent, DialogTitle } from '@mui/material';
 
 
 
@@ -21,9 +22,9 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 800,
- 
- // border: '2px solid #000',
-  boxShadow: 'inherit',
+  bgcolor: 'blue',
+  border: '2px solid #000',
+  boxShadow: 24,
   p: 4,
   height:400
 };
@@ -39,28 +40,22 @@ export default function TransitionsModal({setModal}:any) {
   const {images,title}:any=productSelected
   
   return (
-    <div>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <Box sx={style}>
-            <div style={{width:800, height:400,}}>
+    <Dialog onClose={handleClose} open={open}
+    aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description">
+          <DialogTitle>holi</DialogTitle>
+          <DialogContent>
+          <Box  sx={style}>
+            <div style={{width:800, height:400}}>
             <ImgGallery slides={images}/>
             </div>
            
            
           </Box>
-        </Fade>
-      </Modal>
-    </div>
+          </DialogContent>
+        
+        
+      </Dialog>
+   
   );
 }
