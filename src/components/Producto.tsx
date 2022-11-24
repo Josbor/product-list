@@ -18,9 +18,16 @@ interface props {
 const style={
   color:'#C5C5C5'
 }
+
+const imgStyle={
+ 
+  heigth:200
+
+}
+
 const Producto = ({ producto,openModal}: props) => {
   const selectedProduct = useSelector((state: RootState) => state.selectedProduct.value)
- 
+  
   const dispatch = useDispatch()  
 
   const handleSelect =()=>{
@@ -29,25 +36,24 @@ const Producto = ({ producto,openModal}: props) => {
   }
   return (
     <div onClick={handleSelect}>
-      <Card sx={{ maxWidth: 345 }}>
-        <CardActionArea>
+      <Card sx={{ Width:400,height:325 }}>
+       
           <CardMedia
             component="img"
-            
+            style={{height:200,width:300}}
             image={producto.thumbnail}
             alt="green iguana"
           />
           <CardContent>
-            <Typography gutterBottom variant="h4" component="div">
-              {producto.title}   <span style={style}>{producto.brand}</span>
-                {/* <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
-              </Typography> */}
+            <Typography gutterBottom variant="subtitle1" component="div">
+              {producto.title}  
+            </Typography>
+            <Typography gutterBottom variant="overline" component="div">
+            <span style={style}>{producto.brand}</span>
             </Typography>
            
           </CardContent>
-        </CardActionArea>
+        
         
       </Card>
 
