@@ -26,7 +26,7 @@ const paginationStyle = {
 }
 
 
-export default function ProductPagination({pag,setPag}:any) {
+export default function ProductPagination({pag,setPag,nroItems}:any) {
     const{totalPages,totalItems}=pag
     const [page,setPage]=React.useState(1)
    const [pageinit,setPageInit]=React.useState(1)
@@ -39,8 +39,8 @@ export default function ProductPagination({pag,setPag}:any) {
                
                 setPage(value)
                 const newPag={
-                    pageIni:value==1?1:(value*10)-10,
-                    pageEnd:value==1?10:(value*10),
+                    pageIni:value==1?1:(value*nroItems)-nroItems,
+                    pageEnd:value==1?nroItems:(value*nroItems),
                     currentPage:value,
                     totalPages,
                     totalItems

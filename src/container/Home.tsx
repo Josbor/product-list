@@ -72,7 +72,7 @@ const Home = () => {
         </div>
       </div>
       {modal && <ModalProduct setModal={setModal} />}
-      {list.length>0&&<ProductPagination pag={pag} setPag={setPag}/>}
+      {list.length>0&&<ProductPagination pag={pag} setPag={setPag} nroItems={nroItems}/>}
     </div>
 
     
